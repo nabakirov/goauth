@@ -3,14 +3,12 @@ package auth
 import (
 	"encoding/json"
 	"net/http"
-
-	"github.com/gorilla/mux"
+	"strings"
 )
 
 // Index GET /
 func Index(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
-	token := params["token"]
+	token := strings.Split(r.Header.Get("X-Original-URI"), "/")[1]
 	var resp Response
 	if token == "asdf" {
 		resp = Response{"ok", 200}
