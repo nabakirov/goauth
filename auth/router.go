@@ -23,7 +23,7 @@ var routes = Routes{
 	Route{
 		"Index",
 		"GET",
-		"/{token}",
+		"/auth/{token}",
 		Index,
 	},
 }
