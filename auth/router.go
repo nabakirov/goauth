@@ -34,7 +34,7 @@ func NewRouter() *mux.Router {
 	for _, route := range routes {
 		var handler http.Handler
 		handler = route.HandlerFunc
-		handler = logger.Logger(handler, route.Name)
+		handler = logger.Logger(handler)
 
 		router.
 			Methods(route.Method).

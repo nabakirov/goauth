@@ -8,13 +8,24 @@ import (
 
 // Index GET /
 func Index(w http.ResponseWriter, r *http.Request) {
-	token := strings.Split(r.Header.Get("X-Original-URI"), "/")[1]
+	uri := strings.Split(r.Header.Get("X-Original-URI"), "/")
+	var token string
+	if len(uri) < 2 {
+		token = ""
+	} else {
+		token = uri[1]
+	}
 	var resp Response
-	if token == "asdf" {
-		resp = Response{"ok", 200}
+	if val, ok := Tokens[token]; ok {
+		if val == true {
+			resp = Response{"ok", 200}
+		} else {
+			resp = Response{"invalid token", 403}
+		}
 	} else {
 		resp = Response{"invalid token", 403}
 	}
+
 	data, _ := json.Marshal(resp)
 
 	w.Header().Set("Content-Type", "application/json; charset=UTF-8")
