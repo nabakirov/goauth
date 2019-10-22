@@ -4,8 +4,9 @@ import (
 	"log"
 	"net/http"
 
+	"goauth/auth"
+
 	"github.com/gorilla/handlers"
-	"github.com/nabakirov/goauth/auth"
 )
 
 func main() {

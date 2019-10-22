@@ -3,8 +3,9 @@ package auth
 import (
 	"net/http"
 
+	"goauth/logger"
+
 	"github.com/gorilla/mux"
-	"github.com/nabakirov/goauth/logger"
 )
 
 // Route defines a route
